@@ -17,7 +17,7 @@
   </PropertyGroup>
 	
 	<PropertyGroup>
-		<Cities2_Location>G:\SteamLibrary\steamapps\common\Cities Skylines II</Cities2_Location>
+		<Cities2_Location>D:\SteamLibrary\steamapps\common\Cities Skylines II</Cities2_Location>
 		<ThunderstoreProfileLocation>C:\Users\user\AppData\Roaming\Thunderstore Mod Manager\DataFolder\CitiesSkylines2\profiles\Default</ThunderstoreProfileLocation>
 	</PropertyGroup>
 
@@ -30,16 +30,16 @@
 
 	<ItemGroup Condition="'$(CI)' != 'true'">
 		<Reference Include="HookUILib"><HintPath>..\lib\bin\Debug\netstandard2.1\HookUILib.dll</HintPath><Private>False</Private></Reference>
-        <Reference Include="$(Cities2_Location)\Cities2_Data\Managed\Colossal.*.dll" Private="False"/>
-        <Reference Include="$(Cities2_Location)\Cities2_Data\Managed\Game.dll" Private="False"/>
-        <Reference Include="$(Cities2_Location)\Cities2_Data\Managed\Unity.*.dll" Private="False"/>
+        <Reference Include="$(Cities2_Location)\Cities2_Data\Managed\Colossal.*.dll" Private="False" />
+        <Reference Include="$(Cities2_Location)\Cities2_Data\Managed\Game.dll" Private="False" />
+        <Reference Include="$(Cities2_Location)\Cities2_Data\Managed\Unity.*.dll" Private="False" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(CI)' == 'true'">
 		<Reference Include="HookUILib"><HintPath>..\lib\bin\Debug\netstandard2.1\HookUILib.dll</HintPath><Private>False</Private></Reference>
-		<Reference Include="../libcs2/Colossal.*.dll" Private="False"/>
-		<Reference Include="../libcs2/Game.dll" Private="False"/>
-		<Reference Include="../libcs2/Unity.*.dll" Private="False"/>
+		<Reference Include="../libcs2/Colossal.*.dll" Private="False" />
+		<Reference Include="../libcs2/Game.dll" Private="False" />
+		<Reference Include="../libcs2/Unity.*.dll" Private="False" />
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -51,6 +51,10 @@
 		<PackageReference Include="HarmonyX" Version="2.10.2"></PackageReference>
 		<PackageReference Include="UnityEngine.Modules" Version="2022.3.7" IncludeAssets="compile" />
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+		<PackageReference Include="coverlet.collector" Version="6.0.0">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(BepInExVersion)' == '6'">
@@ -58,7 +62,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(BepInExVersion)' == '5'">
-		<PackageReference Include="BepInEx.Core" Version="5.*" IncludeAssets="compile"/>
+		<PackageReference Include="BepInEx.Core" Version="5.*" IncludeAssets="compile" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(BepInExVersion)' == '6'">
@@ -67,5 +71,9 @@
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\lib\HookUILib.csproj" />
   </ItemGroup>
 </Project>
